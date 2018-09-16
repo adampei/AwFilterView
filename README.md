@@ -2,7 +2,7 @@
 筛选框
 
 
-![image](https://github.com/adampei/AwFilterView/blob/master/images/Untitled.gif)
+![image](https://github.com/adampei/AwFilterView/blob/master/images/001.gif)
 
 > 通过模型初始化视图对应的每一个选项
 
@@ -43,5 +43,74 @@ item.colorSelected = [UIColor redColor];
 
 * 还可以设置item的圆角`item.raidus = 8;`
 * 设置字体大小`item.fontBtn`等
+
+### 将模型给了filterView
+
+```objc
+[filterView addItemsWithArr:@[item, item2, item3, item4]];
+```
+
+### filterView方法
+
+* 设置全选
+
+```objc
+[self.filterView resetStatusWithType:KResetStatus_Selected];
+```
+
+* 全部取消选择
+
+```objc
+[self.filterView resetStatusWithType:KResetStatus_DeSelected];
+```
+
+### filterView的选择模式
+
+* 选择0个或者1个
+
+```objc
+self.filterView.selectType = KSelectType_Single;
+```
+
+* 选择0个或者多个
+
+```objc
+self.filterView.selectType = KSelectType_Muti;
+```
+
+* 只能选一个
+
+```objc
+self.filterView.isForceSelect = YES;
+```
+
+* 可以选择一个或者多个则组合一下同时设置以下两个属性
+
+```objc
+self.filterView.selectType = KSelectType_Muti;
+self.filterView.isForceSelect = YES;
+```
+
+### 选择后的回调方法
+
+* 将所有的模型回调回来, 根据回调回来的模型你可以做操作
+
+```objc
+[filterView setClickBtnCallback:^(NSArray<AwFilterItem *> *arrItems) {
+    
+}];
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
