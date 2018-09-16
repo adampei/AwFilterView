@@ -38,6 +38,7 @@
         [btn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     [self makeConstrains];
+    [self update];
 }
 
 - (void)makeConstrains{
@@ -57,10 +58,10 @@
 
 - (UIButton *)createBtnWithItem:(AwFilterItem *)item{
     
-    UIButton * btn = [UIButton new];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:item.title forState:UIControlStateNormal];
-    [btn setTitleColor:item.colorNormal forState:UIControlStateNormal];
-    [btn setTitleColor:item.colorSelected forState:UIControlStateSelected];
+//    [btn setTitleColor:item.colorNormal forState:UIControlStateNormal];
+//    [btn setTitleColor:item.colorSelected forState:UIControlStateSelected];
     [btn setBackgroundImage:item.imgNormal forState:UIControlStateNormal];
     [btn setBackgroundImage:item.imgSelected forState:UIControlStateSelected];
     btn.selected = item.isSelected;
@@ -75,24 +76,33 @@
     if (item.fontBtn) {
         btn.titleLabel.font = [UIFont systemFontOfSize:item.fontBtn];
     }
-    if (item.colorBgNormal) {
-        [btn setBackgroundImage:[self imageFromColor:item.colorBgNormal size:self.size] forState:UIControlStateNormal];
-    }
-    if (item.colorBgSelected) {
-        [btn setBackgroundImage:[self imageFromColor:item.colorBgSelected size:self.size] forState:UIControlStateSelected];
-    }
+//    if (item.colorBgNormal) {
+//        [btn setBackgroundImage:[self imageFromColor:item.colorBgNormal size:self.size] forState:UIControlStateNormal];
+//    }
+//    if (item.colorBgSelected) {
+//        [btn setBackgroundImage:[self imageFromColor:item.colorBgSelected size:self.size] forState:UIControlStateSelected];
+//    }
     
     return btn;
 }
+
+#pragma mark - events
 
 - (void)clickButton:(UIButton *)sender {
     
     AwFilterItem * currItem = self.arrItems[sender.tag];
     if (self.selectType == KSelectType_Single) {
         
+        // 选中同一个item
         if (self.itemSelected == currItem) {
-            // 选中同一个item
-            self.itemSelected.isSelected = !self.itemSelected.isSelected;
+            
+            // 是否必选
+            if (self.isForceSelect) {
+                self.itemSelected.isSelected = YES;
+            }else{
+                self.itemSelected.isSelected = !self.itemSelected.isSelected;
+            }
+            
         }else{
             // 选中不通item
             self.itemSelected.isSelected = NO;
@@ -117,6 +127,16 @@
         AwFilterItem * item = self.arrItems[i];
         UIButton * btn = self.arrM[i];
         btn.selected = item.isSelected;
+        if (btn.selected) {
+            [btn setBackgroundColor:item.colorBgSelected];
+//            [btn setTitleColor:item.colorSelected forState:UIControlStateNormal];
+            
+            [btn setTitleColor:item.colorSelected forState:UIControlStateNormal];
+        }else{
+            [btn setBackgroundColor:item.colorBgNormal];
+            [btn setTitleColor:item.colorNormal forState:UIControlStateNormal];
+//            [btn setTitleColor:item.colorNormal forState:UIControlStateNormal];
+        }
     }
 }
 
@@ -131,17 +151,17 @@
 }
 
 // 根据颜色生成图片
-- (UIImage*)imageFromColor:(UIColor*)color size:(CGSize)size
-{
-    CGRect rect=CGRectMake(0.0f, 0.0f, size.width,size.height);
-    UIGraphicsBeginImageContext(size);//创建图片
-    CGContextRef context = UIGraphicsGetCurrentContext();//创建图片上下文
-    CGContextSetFillColorWithColor(context, [color CGColor]);//设置当前填充颜色的图形上下文
-    CGContextFillRect(context, rect);//填充颜色
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return theImage;
-}
+//- (UIImage*)imageFromColor:(UIColor*)color size:(CGSize)size
+//{
+//    CGRect rect=CGRectMake(0.0f, 0.0f, size.width,size.height);
+//    UIGraphicsBeginImageContext(size);//创建图片
+//    CGContextRef context = UIGraphicsGetCurrentContext();//创建图片上下文
+//    CGContextSetFillColorWithColor(context, [color CGColor]);//设置当前填充颜色的图形上下文
+//    CGContextFillRect(context, rect);//填充颜色
+//    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return theImage;
+//}
 
 
 

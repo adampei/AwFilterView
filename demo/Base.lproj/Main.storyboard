@@ -62,17 +62,33 @@
                                     <action selector="ciickIsMutiSelectSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="2na-Ex-Ub3"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="是否必选其中一项" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPq-am-mSR">
+                                <rect key="frame" x="16" y="510" width="139" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hoD-5q-v4U">
+                                <rect key="frame" x="61" y="541" width="51" height="31"/>
+                                <connections>
+                                    <action selector="clickForceSelectSwitch:" destination="BYZ-38-t0r" eventType="valueChanged" id="SlX-zN-Ipw"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="u37-Mh-Djj" firstAttribute="centerX" secondItem="Rvw-pv-zNo" secondAttribute="centerX" id="4LV-1A-mn7"/>
                             <constraint firstItem="Rvw-pv-zNo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9dH-vb-9YT"/>
+                            <constraint firstItem="OPq-am-mSR" firstAttribute="top" secondItem="u37-Mh-Djj" secondAttribute="bottom" constant="24" id="GtH-o8-ynY"/>
                             <constraint firstItem="u37-Mh-Djj" firstAttribute="top" secondItem="Rvw-pv-zNo" secondAttribute="bottom" constant="10" id="La2-5N-FYt"/>
+                            <constraint firstItem="hoD-5q-v4U" firstAttribute="centerX" secondItem="OPq-am-mSR" secondAttribute="centerX" id="SUl-1i-Ky8"/>
                             <constraint firstItem="F5K-sE-Ytg" firstAttribute="top" secondItem="PjO-gn-FVk" secondAttribute="bottom" constant="26" id="Voz-G4-MTF"/>
                             <constraint firstItem="Rvw-pv-zNo" firstAttribute="top" secondItem="F5K-sE-Ytg" secondAttribute="bottom" constant="8" id="XR5-uP-kUx"/>
                             <constraint firstItem="PjO-gn-FVk" firstAttribute="top" secondItem="gUJ-RE-ZkF" secondAttribute="bottom" constant="300" id="cZL-A1-DCb"/>
                             <constraint firstItem="F5K-sE-Ytg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="39" id="dZH-ch-L9w"/>
                             <constraint firstItem="PjO-gn-FVk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="41" id="ePS-DJ-TgA"/>
+                            <constraint firstItem="OPq-am-mSR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="ovk-FH-2ov"/>
+                            <constraint firstItem="hoD-5q-v4U" firstAttribute="top" secondItem="OPq-am-mSR" secondAttribute="bottom" constant="10" id="uxc-yY-sGW"/>
                         </constraints>
                     </view>
                 </viewController>

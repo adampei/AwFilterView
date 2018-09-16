@@ -87,6 +87,7 @@
 /// 是否支持多选
 - (IBAction)ciickIsMutiSelectSwitch:(UISwitch *)sender {
     
+    [self.filterView resetStatusWithType:KResetStatus_DeSelected];
     if (sender.isOn) {
         // 多选
         [self.filterView resetStatusWithType:KResetStatus_DeSelected];
@@ -98,6 +99,12 @@
     }
 }
 
+/// 是否必选一项
+- (IBAction)clickForceSelectSwitch:(UISwitch *)sender {
+    
+    [self.filterView resetStatusWithType:KResetStatus_DeSelected];
+    self.filterView.isForceSelect = sender.isOn;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

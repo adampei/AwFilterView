@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, KResetStatus) {
 };
 
 @interface AwFilterView : UIView
+
 /// 选择类型(单选 or 多选)
 @property (nonatomic, assign) KSelectType selectType;
 /// margin
@@ -36,6 +37,8 @@ typedef NS_ENUM(NSUInteger, KResetStatus) {
 @property (nonatomic, assign) NSInteger numsOfSingleLine;
 /// 每选择一次返回一次所有item根据改变的item来进行操作
 @property (nonatomic, copy) void(^clickBtnCallback)(NSArray <AwFilterItem *> *arrItems);
+/// 是否必选一项
+@property (nonatomic, assign) BOOL isForceSelect;
 
 /// 初始化子控件
 - (void)addItemsWithArr:(NSArray <AwFilterItem *>*)arr;
@@ -43,3 +46,15 @@ typedef NS_ENUM(NSUInteger, KResetStatus) {
 - (void)resetStatusWithType:(KResetStatus) type;
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
