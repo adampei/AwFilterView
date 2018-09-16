@@ -111,7 +111,20 @@
         }
         
     }else if(self.selectType == KSelectType_Muti){
-        // 多选不做限制只是取反
+        // 多选
+        if (self.isForceSelect) {
+            
+            NSInteger numSelected = 0;
+            for (int i = 0; i<self.arrItems.count; i++) {
+                AwFilterItem * item = self.arrItems[i];
+                if (item.isSelected == YES) {
+                    numSelected += 1;
+                }
+            }
+            if (numSelected == 1 && currItem.isSelected == YES) {
+                return;
+            }
+        }
         currItem.isSelected = !currItem.isSelected;
     }
     [self update];
